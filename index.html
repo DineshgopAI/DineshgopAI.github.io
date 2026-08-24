@@ -3,27 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reflections</title>
-    <!-- Tailwind CSS for clean typography and layout -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Marked.js to parse markdown into HTML on the fly -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.js"></script>
+    <title>Reasoning Myself Into 'Okay'</title>
+    
+    <!-- GitHub Markdown Modern CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-dark.min.css">
+    <!-- Prism.js Syntax Highlighting Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+    <!-- Marked.js & Prism.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        .markdown-content h1 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #f0f6fc; border-bottom: 1px solid #30363d; padding-bottom: 0.5rem; }
-        .markdown-content p { margin-bottom: 1.25rem; line-height: 1.7; }
-        .markdown-content blockquote { border-left: 4px solid #58a6ff; padding-left: 1rem; color: #8b949e; margin: 1.5rem 0; font-style: italic; }
-        .markdown-content em { color: #8b949e; }
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 740px;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Typography fixes for exact article feel */
+        .markdown-body {
+            background-color: transparent !important;
+            color: #e6edf3 !important;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .markdown-body h1 {
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            font-size: 2.25rem;
+            color: #f0f6fc;
+        }
+
+        .markdown-body blockquote {
+            border-left: 3px solid var(--accent-color);
+            color: #8b949e;
+            background: #161b22;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0;
+        }
+
+        .markdown-body hr {
+            height: 1px;
+            background-color: #30363d;
+            border: none;
+            margin: 2.5rem 0;
+        }
+
+        .markdown-body em {
+            color: #a5d6ff;
+        }
+
+        .meta-info {
+            font-size: 0.875rem;
+            color: #8b949e;
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
-<body class="max-w-2xl mx-auto px-6 py-16">
+<body>
 
-    <main class="markdown-content" id="content">
-        <!-- Markdown text is rendered here automatically -->
-    </main>
+    <div class="wrapper">
+        <div class="meta-info">August 24, 2026 • 4 min read</div>
+        <article class="markdown-body" id="content"></article>
+    </div>
 
     <script>
-        const markdownText = `
+        const markdown = `
 # Reasoning Myself Into 'Okay'
 
 *what am I attached to?*  
@@ -90,8 +155,10 @@ The brain knows, somewhere, that all that time and energy had no real value.
 And that's what actually hurts.
         `;
 
-        // Render markdown into the HTML container
-        document.getElementById('content').innerHTML = marked.parse(markdownText);
+        // Render Markdown into container
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+        // Highlight code blocks
+        Prism.highlightAll();
     </script>
 </body>
 </html>
