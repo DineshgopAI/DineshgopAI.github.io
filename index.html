@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Denji</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            line-height: 1.7;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #21262d;
+            margin: 2rem 0;
+        }
+
+        .article-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .article-list li {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-list a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            transition: color 0.15s ease;
+        }
+
+        .article-list a:hover {
+            color: #58a6ff;
+        }
+
+        .article-list .meta {
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            display: block;
+        }
+
+        .article-list .date {
+            color: #484f58;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        footer {
+            color: #8b949e;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <h1>Denji</h1>
+        <p class="subtitle">Raw thoughts. Unfiltered.</p>
+    </center>
+
+    <hr class="divider" />
+
+    <ul class="article-list" id="article-list">
+        <!-- Articles will be loaded here automatically -->
+        <li style="color:#484f58; text-align:center; padding:2rem 0;">Loading...</li>
+    </ul>
+
+    <hr class="divider" />
+
+    <footer>&copy; 2026 Denji</footer>
+
+    <script>
+        // === CONFIGURATION ===
+        // Add your article files here. Order: newest first.
+        const articles = [
+            {
+                file: "the-one-who-made-me-forget-the-act.html",
+                title: "The One Who Made Me Forget the Act",
+                description: "A fragment of thinking on someone who made me feel relevant.",
+                date: "2026-09-04"
+            },
+            {
+                file: "reasoning-myself-into-okay.html",
+                title: "Reasoning Myself Into 'Okay'",
+                description: "A piece on the brain, rejection, and what settles.",
+                date: "2026-08-24"
+            }
+        ];
+
+        // === RENDER ===
+        function renderArticles() {
+            const container = document.getElementById('article-list');
+            container.innerHTML = '';
+
+            articles.forEach(function(article) {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '/Denji/' + article.file;
+                link.textContent = article.title;
+
+                const meta = document.createElement('span');
+                meta.className = 'meta';
+                meta.textContent = article.description;
+
+                li.appendChild(link);
+                li.appendChild(meta);
+                container.appendChild(li);
+            });
+        }
+
+        renderArticles();
+    </script>
+
+</body>
+</html>
