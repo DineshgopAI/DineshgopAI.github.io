@@ -68,12 +68,6 @@
             display: block;
         }
 
-        .article-list .date {
-            color: #484f58;
-            font-size: 0.75rem;
-            margin-left: 0.5rem;
-        }
-
         footer {
             color: #8b949e;
             font-size: 0.85rem;
@@ -92,7 +86,6 @@
     <hr class="divider" />
 
     <ul class="article-list" id="article-list">
-        <!-- Articles will be loaded here automatically -->
         <li style="color:#484f58; text-align:center; padding:2rem 0;">Loading...</li>
     </ul>
 
@@ -101,24 +94,19 @@
     <footer>&copy; 2026 Denji</footer>
 
     <script>
-        // === CONFIGURATION ===
-        // Add your article files here. Order: newest first.
         const articles = [
             {
                 file: "the-one-who-made-me-forget-the-act.html",
                 title: "The One Who Made Me Forget the Act",
-                description: "A fragment of thinking on someone who made me feel relevant.",
-                date: "2026-09-04"
+                description: "A fragment of thinking on someone who made me feel relevant."
             },
             {
                 file: "reasoning-myself-into-okay.html",
                 title: "Reasoning Myself Into 'Okay'",
-                description: "A piece on the brain, rejection, and what settles.",
-                date: "2026-08-24"
+                description: "A piece on the brain, rejection, and what settles."
             }
         ];
 
-        // === RENDER ===
         function renderArticles() {
             const container = document.getElementById('article-list');
             container.innerHTML = '';
@@ -126,7 +114,7 @@
             articles.forEach(function(article) {
                 const li = document.createElement('li');
                 const link = document.createElement('a');
-                link.href = '/Denji/' + article.file;
+                link.href = '/' + article.file;
                 link.textContent = article.title;
 
                 const meta = document.createElement('span');
